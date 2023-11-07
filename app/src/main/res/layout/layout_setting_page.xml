@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="com.example.unbosque.SettingPage">
+
+    <Button
+        android:id="@+id/button_tema"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tema"
+        android:backgroundTint="@color/cardview_dark_background"
+        android:textSize="20sp"
+        android:background="@drawable/border_background"/>
+
+    <Button
+        android:id="@+id/button_ayuda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ayuda"
+        android:textSize="20sp"
+        android:backgroundTint="@color/cardview_dark_background"
+        android:background="@drawable/border_background"/>
+
+    <Button
+        android:id="@+id/button_quienes_somos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quiénes Somos"
+        android:textSize="20sp"
+        android:backgroundTint="@color/cardview_dark_background"
+        android:background="@drawable/border_background"/>
+</LinearLayout>

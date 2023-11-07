@@ -13,13 +13,30 @@
         android:theme="@style/Theme.HelloWorld"
         tools:targetApi="31">
         <activity
+            android:name="com.example.unbosque.DiseaseInfo"
+            android:exported="false" />
+        <activity
+            android:name="com.example.unbosque.SettingPage"
+            android:exported="true" />
+        <activity
+            android:name="com.example.unbosque.RegisterPage"
+            android:exported="true" />
+        <activity
+            android:name="com.example.unbosque.CreateReminder"
+            android:exported="true" />
+        <activity
+            android:name="com.example.unbosque.RemindersPage"
+            android:exported="true" />
+        <activity
             android:name="com.example.unbosque.Main"
-            android:exported="true" >
-        <intent-filter>
-            <action android:name="android.intent.action.GET_CONTENT" />
-            <category android:name="android.intent.category.DEFAULT" />
-            <data android:mimeType="text/plain" />
-        </intent-filter>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.example.unbosque.Login"

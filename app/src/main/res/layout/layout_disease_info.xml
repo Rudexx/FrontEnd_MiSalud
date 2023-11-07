@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.unbosque.DiseaseInfo"
+    >
+
+
+    <TextView
+        android:id="@+id/doses"
+        android:layout_width="414dp"
+        android:layout_height="67dp"
+        android:layout_marginBottom="216dp"
+        android:background="@drawable/border_background"
+        android:text="Dosis: XXX cada xx"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reco_medicine" />
+
+    <TextView
+        android:id="@+id/general_reco"
+        android:layout_width="414dp"
+        android:layout_height="140dp"
+        android:layout_marginBottom="8dp"
+        android:text="Recomendaciones Generales: XXX"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/reco_medicine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/disease_info"
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@drawable/border_background"/>
+
+    <TextView
+        android:id="@+id/disease_info"
+        android:layout_width="414dp"
+        android:layout_height="192dp"
+        android:text="Informacion de la enfermedad: XXX"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.107"
+        android:background="@drawable/border_background"/>
+
+    <TextView
+        android:id="@+id/disease_name"
+        android:layout_width="409dp"
+        android:layout_height="58dp"
+        android:text="Enfermedad: XXX"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@drawable/border_background"/>
+
+    <TextView
+        android:id="@+id/reco_medicine"
+        android:layout_width="414dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="288dp"
+        android:background="@drawable/border_background"
+        android:text="Medicamento Recomendado: XXX"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/create_rem"
+        android:layout_width="295dp"
+        android:layout_height="61dp"
+        android:text="Crear Recordatorio"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doses"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
