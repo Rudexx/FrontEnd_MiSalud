@@ -75,16 +75,15 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="325dp"
-        android:layout_height="268dp"
+        android:layout_width="329dp"
+        android:layout_height="250dp"
         android:background="@null"
+        android:src="@mipmap/misalud_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.348"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.062"
-        android:src="@mipmap/misalud_logo"/>
+        app:layout_constraintVertical_bias="0.034" />
 
     <TextView
         android:id="@+id/noCuenta"

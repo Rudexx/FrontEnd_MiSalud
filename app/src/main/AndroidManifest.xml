@@ -13,8 +13,17 @@
         android:theme="@style/Theme.HelloWorld"
         tools:targetApi="31">
         <activity
+            android:name="com.example.unbosque.ChatPage"
+            android:exported="true" />
+        <activity
+            android:name="com.example.unbosque.CreateMedicine"
+            android:exported="true" />
+        <activity
+            android:name="com.example.unbosque.MedicinePage"
+            android:exported="true" />
+        <activity
             android:name="com.example.unbosque.DiseaseInfo"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name="com.example.unbosque.SettingPage"
             android:exported="true" />

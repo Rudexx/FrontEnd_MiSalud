@@ -2,6 +2,7 @@ package com.example.unbosque;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,8 +31,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == R.id.loginBtn) {
             Toast.makeText(this, "Login :)", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Login.this, Main.class);
+            startActivity(intent);
         }else if(v.getId() == R.id.register){
             Toast.makeText(this, "Register :)", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Login.this, RegisterPage.class);
+            startActivity(intent);
         }
     }
 

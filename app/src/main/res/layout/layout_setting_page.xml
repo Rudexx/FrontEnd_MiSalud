@@ -12,10 +12,9 @@
         android:id="@+id/button_tema"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tema"
         android:backgroundTint="@color/cardview_dark_background"
-        android:textSize="20sp"
-        android:background="@drawable/border_background"/>
+        android:text="Tema"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/button_ayuda"
@@ -23,8 +22,7 @@
         android:layout_height="wrap_content"
         android:text="Ayuda"
         android:textSize="20sp"
-        android:backgroundTint="@color/cardview_dark_background"
-        android:background="@drawable/border_background"/>
+        android:backgroundTint="@color/cardview_dark_background" />
 
     <Button
         android:id="@+id/button_quienes_somos"
@@ -32,6 +30,5 @@
         android:layout_height="wrap_content"
         android:text="Quiénes Somos"
         android:textSize="20sp"
-        android:backgroundTint="@color/cardview_dark_background"
-        android:background="@drawable/border_background"/>
+        android:backgroundTint="@color/cardview_dark_background" />
 </LinearLayout>

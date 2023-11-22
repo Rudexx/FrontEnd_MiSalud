@@ -3,6 +3,7 @@ package com.example.unbosque;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,28 +36,32 @@ public class Main extends AppCompatActivity {
         chatbotButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle chatbot icon click
+                Intent intent = new Intent(Main.this, ChatPage.class);
+                startActivity(intent);
             }
         });
 
         remindersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle reminders icon click
+                Intent intent = new Intent(Main.this, RemindersPage.class);
+                startActivity(intent);
             }
         });
 
         medicinesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle medicines icon click
+                Intent intent = new Intent(Main.this, MedicinePage.class);
+                startActivity(intent);
             }
         });
 
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle settings icon click
+                Intent intent = new Intent(Main.this, SettingPage.class);
+                startActivity(intent);
             }
         });
 

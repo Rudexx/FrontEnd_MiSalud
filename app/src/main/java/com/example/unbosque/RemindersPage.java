@@ -1,5 +1,6 @@
 package com.example.unbosque;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,10 +27,9 @@ public class RemindersPage extends AppCompatActivity {
         viewRemindersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle button click action here
-                // For example, you can open a new activity to display reminders
-                // or perform any action you want.
-                Toast.makeText(RemindersPage.this, "Button Clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(RemindersPage.this, CreateReminder.class);
+                startActivity(intent);
+                Toast.makeText(RemindersPage.this, "Crear recordatorio", Toast.LENGTH_SHORT).show();
             }
         });
     }

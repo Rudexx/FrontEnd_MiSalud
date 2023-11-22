@@ -2,6 +2,7 @@
     <string name="app_name">MiSalud</string>
     <string name="settings">Configuración</string>
     <string name="title_activity_register_page">Register_Page</string>
+    <string name="add_medicine">Añadir Medicina</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
