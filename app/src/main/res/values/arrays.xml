@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="symptoms">
+        <item>Seleccionar síntoma</item>
+        <item>Dolor de cabeza</item>
+        <item>Lagrimeo</item>
+        <item>Tos seca</item>
+        <item>Estornudos</item>
+        <item>Irritación en los ojos</item>
+        <item>Sinusitis</item>
+        <item>Asma</item>
+        <item>Dolor muscular</item>
+        <item>Inflamación muscular</item>
+        <item>Dolor al flexionar</item>
+        <item>Hematomas en la zona</item>
+        <item>Alivio con el reposo</item>
+        <item>Esfuerzo físico reciente</item>
+        <item>Enrojecimiento</item>
+        <item>Picazón</item>
+        <item>Inflamación</item>
+        <item>Dolor de garganta</item>
+        <item>Pérdida de voz parcial o total</item>
+        <item>Uso continuo de la voz</item>
+        <item>Deposiciones líquidas</item>
+        <item>Sangre en heces</item>
+        <item>Sensación de náuseas o vómitos</item>
+        <item>Acidez en el estómago</item>
+        <item>Gases</item>
+        <item>Reflujo gástrico</item>
+        <item>Dificultad al ir al baño</item>
+        <item>Inflamación o hinchazón en el abdomen</item>
+        <item>Sensación de llenura</item>
+        <item>Congestión nasal</item>
+        <item>Malestar general leve</item>
+        <item>Fiebre leve</item>
+        <item>Nauseas</item>
+        <item>Vomitos</item>
+        <item>Sensibilidad a la luz</item>
+        <item>Sensibilidad al ruido</item>
+        <item>Golpe fuerte en la cabeza</item>
+        <!-- Agrega más síntomas si es necesario -->
+    </string-array>
+
+    <string-array name="pain_scale">
+        <item>Seleccionar intensidad del dolor</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="yes_no_options">
+        <item>Si</item>
+        <item>No</item>
+    </string-array>
+
+</resources>
