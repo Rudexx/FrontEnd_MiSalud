@@ -1,38 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
     tools:context="com.example.unbosque.ChatPage">
 
+    <!-- ListView para mostrar mensajes -->
     <ListView
         android:id="@+id/chatListView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:divider="@null"
+        android:layout_width="365dp"
+        android:layout_height="611dp"
+        android:layout_above="@id/layout_bottom"
+        android:layout_marginBottom="24dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="4dp"
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll" />
 
+    <!-- Layout para los elementos de la parte inferior -->
     <LinearLayout
+        android:id="@+id/layout_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/messageInput"
+        <!-- Spinner para seleccionar síntomas -->
+        <Spinner
+            android:id="@+id/symptomSpinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Type a message" />
+            android:layout_marginBottom="16dp" />
 
+        <!-- Botón para enviar el síntoma seleccionado -->
         <Button
-            android:id="@+id/sendButton"
+            android:id="@+id/sendSymptomButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send" />
+            android:text="Enviar Síntoma"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
     </LinearLayout>
-</LinearLayout>
+
+</RelativeLayout>

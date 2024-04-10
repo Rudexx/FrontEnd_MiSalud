@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:background="@mipmap/chat_bubble"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="8dp"
+android:gravity="end">
 
     <TextView
         android:id="@+id/messageText"

@@ -1,0 +1,15 @@
+package reglas;
+
+import com.example.unbosque.Paciente;
+import com.example.unbosque.Sintoma;
+import com.example.unbosque.DiagnosticoResultado;
+
+rule "Identificar Gripe"
+when
+    $paciente: Paciente()
+    $resultado: DiagnosticoResultado()
+    exists Sintoma(nombre == "fiebre", valorDolor >= 5) from $paciente.getSintomas()
+    exists Sintoma(nombre == "tos", valorDolor >= 5) from $paciente.getSintomas()
+then
+    $resultado.setEnfermedad("Gripe");
+end
