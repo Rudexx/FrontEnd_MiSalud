@@ -19,6 +19,9 @@
         <activity
             android:name="com.example.unbosque.CreateMedicine"
             android:exported="true" />
+	<activity
+	    android:name="com.example.unbosque.DiseaseDetailActivity" 
+	    />
         <activity
             android:name="com.example.unbosque.MedicinePage"
             android:exported="true" />

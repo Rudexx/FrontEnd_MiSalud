@@ -6,6 +6,14 @@ android {
     namespace = "com.example.helloworld"
     compileSdk = 33
 
+    packagingOptions {
+        exclude("META-INF/LICENSE.md")
+        exclude("META-INF/NOTICE.md")
+        exclude("META-INF/ErraiApp.properties")
+        exclude("META-INF/INDEX.LIST")
+        // Puedes agregar más exclusiones aquí si hay otros archivos duplicados
+    }
+
     defaultConfig {
         applicationId = "com.example.helloworld"
         minSdk = 24
@@ -35,6 +43,14 @@ android {
 }
 
 dependencies {
+
+    implementation ("org.kie:kie-api:7.59.0.Final")
+    implementation ("org.drools:drools-core:8.44.0.Final")
+    implementation("org.drools:drools-compiler:8.44.0.Final")
+    implementation("org.drools:drools-mvel:8.44.0.Final")
+
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("com.google.android.material:material:1.4.0")
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.8.0")

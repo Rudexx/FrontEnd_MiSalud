@@ -2,6 +2,18 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="CreateReminder">
+        <State />
+      </entry>
+      <entry key="Main">
+        <State />
+      </entry>
+      <entry key="RegisterPage">
+        <State />
+      </entry>
+      <entry key="RemindersPage">
+        <State />
+      </entry>
       <entry key="app">
         <State />
       </entry>
