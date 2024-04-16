@@ -12,4 +12,7 @@ public interface UserApiService {
 
     @POST("api/users/register")
     Call<String> registerUser(@Body UserRegistrationRequest userRegistrationRequest);
+
+    @POST("api/reminders/register")
+    Call<String> registerReminder(@Body ReminderRegistration reminderRegistration);
 }
