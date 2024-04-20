@@ -74,7 +74,7 @@ public class DiagnosticoHelper {
 
         boolean tieneDolorDeCabeza = false;
         boolean tieneLagrimeo = false;
-        boolean tieneTosSeca = false;
+        boolean tieneTos = false;
         boolean tieneEstornudos = false;
         boolean tieneIrritacionEnLosOjos = false;
         boolean tieneSinusitis = false;
@@ -84,15 +84,14 @@ public class DiagnosticoHelper {
         boolean tieneInflamacionMuscular = false;
         boolean tieneDolorAlFlexionar = false;
         boolean tieneHematomasEnLaZona = false;
-        boolean tieneAlivioConElReposo = false;
         boolean tieneEsfuerzoFisicoReciente = false;
+        boolean tienePicazonDeGarganta = false;
         boolean tieneEnrojecimiento = false;
-        boolean tieneContactoConSustancia = false;
+        boolean tieneDolorDeEstomago = false;
         boolean tienePicazon = false;
         boolean tieneInflamacion = false; // Considerar cómo manejarás el nivel de dolor
         boolean tieneDolorDeGarganta = false;
         boolean tienePerdidaDeVoz = false;
-        boolean tieneUsoContinuoDeLaVoz = false;
         boolean tieneDeposicionesLiquidas = false;
         boolean tieneSangreEnHeces = false;
         boolean tieneSensacionDeNauseasOVomitos = false;
@@ -104,7 +103,10 @@ public class DiagnosticoHelper {
         boolean tieneSensacionDeLlenura = false;
         boolean tieneCongestionNasalONarizTapada = false;
         boolean tieneMalestarGeneralLeve = false;
-        boolean tieneFiebreLeve = false;
+        boolean tieneDolorAlTragar = false;
+        boolean tieneEstrenimiento = false;
+        boolean tieneFiebre = false;
+        boolean tieneInflamacionDeAmigdalas = false;
 // Síntomas de exclusión para la cefalea
         boolean tieneNauseas = false;
         boolean tieneVomitos = false;
@@ -129,8 +131,8 @@ public class DiagnosticoHelper {
                 case "Lagrimeo":
                     tieneLagrimeo = true;
                     break;
-                case "Tos seca":
-                    tieneTosSeca = true;
+                case "Tos":
+                    tieneTos = true;
                     break;
                 case "Estornudos":
                     tieneEstornudos = true;
@@ -157,8 +159,8 @@ public class DiagnosticoHelper {
                 case "Hematomas en la zona":
                     tieneHematomasEnLaZona = true;
                     break;
-                case "Alivio con el reposo":
-                    tieneAlivioConElReposo = true;
+                case "Dolor de Estomago":
+                    tieneDolorDeEstomago = true;
                     break;
                 case "Esfuerzo físico reciente":
                     tieneEsfuerzoFisicoReciente = true;
@@ -177,9 +179,6 @@ public class DiagnosticoHelper {
                     break;
                 case "Pérdida de voz parcial o total":
                     tienePerdidaDeVoz = true;
-                    break;
-                case "Uso continuo de la voz":
-                    tieneUsoContinuoDeLaVoz = true;
                     break;
                 case "Deposiciones líquidas":
                     tieneDeposicionesLiquidas = true;
@@ -214,14 +213,26 @@ public class DiagnosticoHelper {
                 case "Malestar general leve":
                     tieneMalestarGeneralLeve = true;
                     break;
-                case "Fiebre leve":
-                    tieneFiebreLeve = true;
+                case "Fiebre":
+                    tieneFiebre = true;
                     break;
                 case "Nauseas":
                     tieneNauseas = true;
                     break;
                 case "Vomitos":
                     tieneVomitos = true;
+                    break;
+                case "Picazon de Garganta":
+                    tienePicazonDeGarganta = true;
+                    break;
+                case "Dolor al tragar":
+                    tieneDolorAlTragar = true;
+                    break;
+                case "Estreñimiento":
+                    tieneEstrenimiento = true;
+                    break;
+                case "Amigdalas Inflamadas":
+                    tieneInflamacionDeAmigdalas = true;
                     break;
                 case "Sensibilidad a la luz":
                     tieneSensibilidadALuz = true;
@@ -263,23 +274,85 @@ public class DiagnosticoHelper {
             return "Por favor asistir a un centro de consulta medica, no estoy autorizado a tratarte";
         }
 
-        if (tieneLagrimeo && tieneTosSeca && tieneEstornudos && tieneIrritacionEnLosOjos && tieneSinusitis && tieneAsma && !tieneDificultadRespiratoria) {
-            enfermedad = "Alergia respiratoria";
+        if (tieneLagrimeo && tieneTos && tieneEstornudos && tieneIrritacionEnLosOjos && tieneSinusitis && tieneAsma && !tieneDificultadRespiratoria) {
+            if (enfermedad != null) {
+                enfermedad = "Síntomas coinciden con diferentes enfermedades, por favor consultar a un médico, enfermedades coincidentes: " + enfermedad + "Alergia respiratoria";
+            }else {
+                enfermedad = "Alergia respiratoria";
+            }
         }
 
         if (tieneDolorMuscular  &&
-                !tieneDolorMuscularAlTocar && !tieneHematomasEnLaZona && tieneInflamacionMuscular && tieneDolorAlFlexionar &&
-                tieneAlivioConElReposo && tieneEsfuerzoFisicoReciente) {
+                !tieneDolorMuscularAlTocar && !tieneHematomasEnLaZona && tieneInflamacionMuscular && tieneDolorAlFlexionar && tieneEsfuerzoFisicoReciente) {
+            if (enfermedad != null) {
+                enfermedad = "Síntomas coinciden con diferentes enfermedades, por favor consultar a un médico, enfermedades coincidentes: " + enfermedad + "Fatiga muscular";
+            }else {
             enfermedad = "Fatiga muscular";
+            }
         }
 
         if (tieneEnrojecimiento && (tienePicazon || tieneInflamacion)) {
-            enfermedad = "Alergia cutánea o tópica";
+            if (enfermedad != null) {
+                enfermedad = "Síntomas coinciden con diferentes enfermedades, por favor consultar a un médico, enfermedades coincidentes: " + enfermedad + "Alergia cutánea o tópica";
+            }else {
+                enfermedad = "Alergia cutánea o tópica";
+            }
+        }
+
+        if (tieneDolorDeGarganta && tienePerdidaDeVoz) {
+            if (enfermedad != null) {
+                enfermedad = "Síntomas coinciden con diferentes enfermedades, por favor consultar a un médico, enfermedades coincidentes: " + enfermedad + "Pérdida de Voz por Esfuerzo";
+            }else {
+            enfermedad = "Pérdida de Voz por Esfuerzo";
+            }
+        }
+
+        if (tieneDeposicionesLiquidas && tieneSangreEnHeces && tieneSensacionDeNauseasOVomitos) {
+            if (enfermedad != null) {
+                enfermedad = "Síntomas coinciden con diferentes enfermedades, por favor consultar a un médico, enfermedades coincidentes: " + enfermedad + "Infección Gastrointestinal";
+            }else {
+                enfermedad = "Infección Gastrointestinal";
+            }
+        }
+
+        if (tieneAcidezEnElEstomago && tieneGases && tieneReflujoGastrico && tieneDolorDeEstomago) {
+            if (enfermedad != null) {
+                enfermedad = "Síntomas coinciden con diferentes enfermedades, por favor consultar a un médico, enfermedades coincidentes: " + enfermedad + "Gastritis";
+            }else {
+                enfermedad = "Gastritis";
+            }
+        }
+
+        if (tienePicazonDeGarganta && tieneDolorAlTragar && tieneInflamacionDeAmigdalas) {
+            if (enfermedad != null) {
+                enfermedad = "Síntomas coinciden con diferentes enfermedades, por favor consultar a un médico, enfermedades coincidentes: " + enfermedad + "Amigdalitis";
+            }else {
+                enfermedad = "Amigdalitis";
+            }
+        }
+
+        if (tieneEstrenimiento && tieneDificultadAlIrAlBaño && tieneInflamacionOHinchazonEnElAbdomen && tieneDolorDeEstomago && tieneSensacionDeLlenura) {
+            if (enfermedad != null) {
+                enfermedad = "Síntomas coinciden con diferentes enfermedades, por favor consultar a un médico, enfermedades coincidentes: " + enfermedad + "Estreñimiento";
+            }else {
+                enfermedad = "Estreñimiento";
+            }
+        }
+
+        if (tieneCongestionNasalONarizTapada && tieneDolorDeGarganta && tieneTos &&
+                tieneEstornudos && tieneMalestarGeneralLeve && tieneDolorDeCabeza &&
+                tieneFiebre) {
+            if (enfermedad != null) {
+                enfermedad = "Síntomas coinciden con diferentes enfermedades, por favor consultar a un médico, enfermedades coincidentes: " + enfermedad + "Resfriado";
+            }else {
+                enfermedad = "Resfriado";
+            }
         }
 
         if(enfermedad == ""){
             enfermedad = "No he podido identificar la enfermedad que tienes, por favor ve a un centro medico";
         }
+
         return enfermedad;
     }
 }
