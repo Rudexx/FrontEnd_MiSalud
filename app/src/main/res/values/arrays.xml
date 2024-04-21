@@ -4,7 +4,7 @@
         <item>Seleccionar síntoma</item>
         <item>Dolor de cabeza</item>
         <item>Lagrimeo</item>
-        <item>Tos seca</item>
+        <item>Tos</item>
         <item>Estornudos</item>
         <item>Irritación en los ojos</item>
         <item>Sinusitis</item>
@@ -13,12 +13,12 @@
         <item>Inflamación muscular</item>
         <item>Dolor al flexionar</item>
         <item>Hematomas en la zona</item>
-        <item>Alivio con el reposo</item>
         <item>Esfuerzo físico reciente</item>
         <item>Enrojecimiento</item>
         <item>Picazón</item>
         <item>Inflamación</item>
         <item>Dolor de garganta</item>
+        <item>Dolor de Estomago</item>
         <item>Pérdida de voz parcial o total</item>
         <item>Uso continuo de la voz</item>
         <item>Deposiciones líquidas</item>
@@ -32,7 +32,7 @@
         <item>Sensación de llenura</item>
         <item>Congestión nasal</item>
         <item>Malestar general leve</item>
-        <item>Fiebre leve</item>
+        <item>Fiebre</item>
         <item>Nauseas</item>
         <item>Vomitos</item>
         <item>Sensibilidad a la luz</item>
