@@ -13,6 +13,7 @@ import org.threeten.bp.format.DateTimeFormatter;
 import com.example.helloworld.R;
 import com.example.unbosque.Model.ApiServiceBuilder;
 import com.example.unbosque.Model.Reminder;
+import com.example.unbosque.Model.SharedPreferencesManager;
 import com.example.unbosque.Model.UserApiService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -63,7 +64,22 @@ public class RemindersPage extends AppCompatActivity {
                 R.mipmap.calendar_icon2,
                 R.mipmap.calendar_icon3,
         };
-        getReminders("dj@gmail.com");
+
+
+
+        SharedPreferencesManager manager = new SharedPreferencesManager(this);
+        String userEmail = manager.getUserEmail();
+
+
+        if (userEmail != null) {
+            getReminders(userEmail);  // Usa el correo para cargar los recordatorios específicos del usuario
+        } else {
+            Toast.makeText(RemindersPage.this, "Error de Sesion.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(RemindersPage.this, Login.class);
+            startActivity(intent);
+        }
+
+
         viewRemindersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +95,6 @@ public class RemindersPage extends AppCompatActivity {
             @Override
             public void onDateSelected(MaterialCalendarView widget, CalendarDay date, boolean selected) {
                 String selectedDate = String.format("%04d-%02d-%02d", date.getYear(), date.getMonth(), date.getDay());
-                Log.d("RemindersPage", "Selected date: " + selectedDate);
                 List<String> dayReminders = reminders.get(selectedDate);
                 if (dayReminders != null && !dayReminders.isEmpty()) {
                     showDialog(dayReminders);
@@ -90,7 +105,36 @@ public class RemindersPage extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        SharedPreferencesManager manager = new SharedPreferencesManager(this);
+        String userEmail = manager.getUserEmail();
+
+        if (userEmail != null) {
+            getReminders(userEmail);  // Usa el correo para cargar los recordatorios específicos del usuario
+            for (Map.Entry<String, List<String>> entry : reminders.entrySet()) {
+                String date = entry.getKey(); // The date as the key of the HashMap
+                List<String> remindersForDate = entry.getValue(); // The list of reminders for this date
+
+                Toast.makeText(RemindersPage.this, (("Reminders on " + date + ":")), Toast.LENGTH_SHORT).show();  // Print the date
+                for (String reminder : remindersForDate) {
+                    Toast.makeText(RemindersPage.this, ("  - " + reminder), Toast.LENGTH_SHORT).show(); // Print each reminder
+                }
+            }
+        } else {
+            Toast.makeText(RemindersPage.this, "Error de Sesion.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(RemindersPage.this, Login.class);
+            startActivity(intent);
+        }
+
+    }
+
     private void getReminders(String email){
+        reminderList.clear(); // Limpiar la lista existente antes de añadir nuevos elementos
+        reminders.clear();
+
         UserApiService apiService = ApiServiceBuilder.createService();
         Call<List<Reminder>> call = apiService.getReminders(email);
 
@@ -105,7 +149,6 @@ public class RemindersPage extends AppCompatActivity {
                     }
 
                     for (Reminder reminder : response.body()) {
-                        reminderList.add(reminder);
                         addReminderToCalendar(reminder);
                     }
                     verificarLista();
@@ -132,7 +175,8 @@ public class RemindersPage extends AppCompatActivity {
         }
 
 
-        reminders.get(key).add(reminder.getNombre_compuesto() + " - " + reminder.getFrecuencia());
+        reminders.get(key).add("Nombre del Compuesto: " + reminder.getNombre_compuesto() +
+                " - Tomar Cada: " + reminder.getFrecuencia() + " Hasta: " + reminder.getFecha_final().substring(0,10));
         System.out.println("key:   " + key + " " + reminders.get(key));
 
     }

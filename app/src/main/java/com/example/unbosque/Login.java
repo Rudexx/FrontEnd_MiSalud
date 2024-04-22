@@ -25,6 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
+import com.example.unbosque.Model.SharedPreferencesManager;
 import com.example.unbosque.Model.UserApiService; // Replace with your actual package name
 import com.example.unbosque.Model.LoginRequest;
 import com.example.unbosque.Model.LoginResponse;
@@ -85,6 +86,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     String responseText = response.body();
                     // Since the response is plain text, you just log it or display it directly
                     Toast.makeText(Login.this, "Response: " + responseText, Toast.LENGTH_LONG).show();
+                    SharedPreferencesManager manager = new SharedPreferencesManager(Login.this);
+                    manager.saveUserEmail(email);
                     Intent intent = new Intent(Login.this, Main.class);
                     startActivity(intent);
                 } else {

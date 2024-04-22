@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.helloworld.R;
 import com.example.unbosque.Model.LoginRequest;
 import com.example.unbosque.Model.ReminderRegistration;
+import com.example.unbosque.Model.SharedPreferencesManager;
 import com.example.unbosque.Model.UserApiService;
 
 import okhttp3.OkHttpClient;
@@ -86,12 +87,13 @@ public class CreateReminder extends AppCompatActivity {
         confirmButton.setOnClickListener(view -> showConfirmationDialog());
     }
 
-    private void attemptLogin() {
+    private void attemptRegistration() {
         String nombre = name.getText().toString();
         String desde = fromDate.getText().toString();
         String hasta = toDate.getText().toString();
         String frecuencia = spinnerCada.getSelectedItem().toString();
-        String correo = "dj@gmail.com";
+        SharedPreferencesManager manager = new SharedPreferencesManager(this);
+        String correo = manager.getUserEmail();
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -114,7 +116,7 @@ public class CreateReminder extends AppCompatActivity {
                     String responseText = response.body();
                     // Since the response is plain text, you just log it or display it directly
                     Toast.makeText(CreateReminder.this, "Response: " + responseText, Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(CreateReminder.this, Main.class);
+                    Intent intent = new Intent(CreateReminder.this, RemindersPage.class);
                     startActivity(intent);
                 } else {
                     // Handle API error
@@ -130,7 +132,7 @@ public class CreateReminder extends AppCompatActivity {
         });
     }
     private void showConfirmationDialog() {
-        attemptLogin();
+        attemptRegistration();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Confirmación");
         builder.setMessage("Recordatorio creado con éxito.");
