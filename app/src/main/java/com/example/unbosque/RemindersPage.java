@@ -1,5 +1,6 @@
 package com.example.unbosque;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,12 +12,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import org.threeten.bp.format.DateTimeFormatter;
 import com.example.helloworld.R;
+import com.example.unbosque.Model.AlarmReceiver;
 import com.example.unbosque.Model.ApiServiceBuilder;
 import com.example.unbosque.Model.Reminder;
 import com.example.unbosque.Model.SharedPreferencesManager;
 import com.example.unbosque.Model.UserApiService;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import android.app.AlarmManager;
+import android.content.Context;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
@@ -25,20 +27,14 @@ import com.jakewharton.threetenabp.AndroidThreeTen;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.format.DateTimeParseException;
 
-import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RemindersPage extends AppCompatActivity {
 
@@ -202,6 +198,8 @@ public class RemindersPage extends AppCompatActivity {
 
                 int drawableResId = getDrawableIdForDay(day);
                 calendarView.addDecorator(new EventDecorator(this, drawableResId, day));
+                Intent intent = new Intent(this, Main.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
             } catch (DateTimeParseException e) {
                 System.err.println("Error parsing date: " + dateStr);
             }
@@ -226,6 +224,16 @@ public class RemindersPage extends AppCompatActivity {
         builder.setPositiveButton("OK", (dialog, id) -> dialog.dismiss());
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    public void CreateAlarms() {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        long timeAtWhichAlarmMustRing = System.currentTimeMillis() + 1000 * 60 * 10; // 10 minutos desde ahora
+        alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtWhichAlarmMustRing, pendingIntent);
+
+        Toast.makeText(this, "Alarma configurada para dentro de 10 minutos.", Toast.LENGTH_SHORT).show();
     }
 
 }
