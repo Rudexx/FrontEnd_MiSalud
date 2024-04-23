@@ -198,8 +198,8 @@ public class RemindersPage extends AppCompatActivity {
 
                 int drawableResId = getDrawableIdForDay(day);
                 calendarView.addDecorator(new EventDecorator(this, drawableResId, day));
-                Intent intent = new Intent(this, Main.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+                //Intent intent = new Intent(this, Main.class);
+                //PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
             } catch (DateTimeParseException e) {
                 System.err.println("Error parsing date: " + dateStr);
             }

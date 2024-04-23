@@ -1,10 +1,21 @@
 package com.example.unbosque;
 import java.util.Calendar;
+
+import android.annotation.SuppressLint;
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.os.Build;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.app.AlertDialog;
@@ -132,13 +143,49 @@ public class CreateReminder extends AppCompatActivity {
         });
     }
     private void showConfirmationDialog() {
-        attemptRegistration();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Confirmación");
-        builder.setMessage("Recordatorio creado con éxito.");
-        builder.setPositiveButton("OK", (dialog, id) -> startMainActivity());
+        builder.setMessage("¿Deseas crear el recordatorio y configurar las alarmas?");
+        builder.setPositiveButton("OK", (dialog, id) -> {
+            attemptRegistration();
+            scheduleNotificationOneMinuteLater();  // Notificación en 1 minuto
+            scheduleNotificationBasedOnHours();    // Notificación según las horas seleccionadas
+            startMainActivity();
+        });
+        builder.setNegativeButton("Cancelar", (dialog, id) -> dialog.dismiss());
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    @SuppressLint("ScheduleExactAlarm")
+    private void scheduleNotificationOneMinuteLater() {
+        Intent intent = new Intent(this, ReminderBroadcastReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        long timeAtButtonClick = System.currentTimeMillis();
+        long oneMinuteInMillis = 60000; // 60,000 milliseconds in a minute
+
+        // Programar la alarma para que se active en un minuto
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeAtButtonClick + oneMinuteInMillis, pendingIntent);
+    }
+
+    @SuppressLint("ScheduleExactAlarm")
+    private void scheduleNotificationBasedOnHours() {
+        String hoursText = spinnerCada.getSelectedItem().toString();
+        int hours = Integer.parseInt(hoursText.split(" ")[0]); // Extraer el número de horas del texto del spinner
+        long hoursInMillis = hours * 3600000; // Convertir horas a milisegundos
+
+        Intent intent = new Intent(this, ReminderBroadcastReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this, hours, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        long timeAtButtonClick = System.currentTimeMillis();
+
+        // Programar la alarma para que se active después del número de horas seleccionado
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeAtButtonClick + hoursInMillis, pendingIntent);
     }
 
     private void startMainActivity() {
