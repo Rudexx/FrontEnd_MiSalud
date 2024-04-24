@@ -9,11 +9,11 @@
     tools:context="com.example.unbosque.SettingPage">
 
     <Button
-        android:id="@+id/button_tema"
+        android:id="@+id/button_datos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/cardview_dark_background"
-        android:text="Tema"
+        android:backgroundTint="#8c52ff"
+        android:text="Datos Usuario"
         android:textSize="20sp" />
 
     <Button
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:text="Ayuda"
         android:textSize="20sp"
-        android:backgroundTint="@color/cardview_dark_background" />
+        android:backgroundTint="#8c52ff"/>
 
     <Button
         android:id="@+id/button_quienes_somos"
@@ -30,5 +30,5 @@
         android:layout_height="wrap_content"
         android:text="Quiénes Somos"
         android:textSize="20sp"
-        android:backgroundTint="@color/cardview_dark_background" />
+        android:backgroundTint="#8c52ff"/>
 </LinearLayout>

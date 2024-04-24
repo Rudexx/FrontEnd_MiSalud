@@ -24,4 +24,7 @@ public interface UserApiService {
     // Define a GET method for fetching reminders using a path parameter
     @GET("api/reminders/{correo}")
     Call<List<Reminder>> getReminders(@Path("correo") String correo);
+
+    @GET("api/users/{correo}")
+    Call<Usuario> getUser(@Path("correo") String correo);
 }
