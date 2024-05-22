@@ -165,7 +165,7 @@ public class CreateReminder extends AppCompatActivity {
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         long timeAtButtonClick = System.currentTimeMillis();
-        long oneMinuteInMillis = 60000; // 60,000 milliseconds in a minute
+        long oneMinuteInMillis = 30000; // 60,000 milliseconds in a minute
 
         // Programar la alarma para que se active en un minuto
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeAtButtonClick + oneMinuteInMillis, pendingIntent);

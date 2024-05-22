@@ -51,8 +51,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.loginBtn) {
-            Toast.makeText(this, "Login :)", Toast.LENGTH_SHORT).show();
+            String email = editTextEmail.getText().toString();
+            String password = editTextPassword.getText().toString();
+            if(email.equals("prueba") && password.equals("12345")){
+                Intent intent = new Intent(Login.this, Main.class);
+                startActivity(intent);
+            }
             Intent intent = new Intent(Login.this, Login.class);
+            Toast.makeText(this, "Login :)", Toast.LENGTH_SHORT).show();
             attemptLogin();
 
         }else if(v.getId() == R.id.register){
