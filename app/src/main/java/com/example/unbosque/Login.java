@@ -88,7 +88,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     Toast.makeText(Login.this, "Response: " + responseText, Toast.LENGTH_LONG).show();
                     SharedPreferencesManager manager = new SharedPreferencesManager(Login.this);
                     manager.saveUserEmail(email);
-                    Intent intent = new Intent(Login.this, Main.class);
+                    Intent intent = new Intent(Login.this, AcuerdoUsuario.class);
                     startActivity(intent);
                 } else {
                     // Handle API error
