@@ -2,13 +2,6 @@ package com.example.unbosque;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.util.Log;
-
-import org.kie.api.KieServices;
-import org.kie.api.builder.KieBuilder;
-import org.kie.api.builder.KieFileSystem;
-import org.kie.api.runtime.KieContainer;
-import org.kie.api.runtime.KieSession;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,55 +10,6 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 public class DiagnosticoHelper {
-    private KieSession kieSession = null;
-    private boolean isInitialized = false;
-
-    public DiagnosticoHelper(Context context) {
-        //init(context);
-    }
-
-    private void init(Context context) {
-        try {
-            // Cargar el contenido del archivo .drl como un String
-            String drlString = loadDrlFile(context, "rules/ejemploenfermedad.drl");
-
-            // Configurar Drools para usar el String
-            KieServices kieServices = KieServices.Factory.get();
-            KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
-            kieFileSystem.write("src/main/resources/dynamicRule.drl", kieServices.getResources().newByteArrayResource(drlString.getBytes()));
-            KieBuilder kieBuilder = kieServices.newKieBuilder(kieFileSystem).buildAll();
-
-            // Comprobar errores de compilación
-            if (kieBuilder.getResults().hasMessages(org.kie.api.builder.Message.Level.ERROR)) {
-                throw new RuntimeException("Errores de compilación en las reglas: " + kieBuilder.getResults().toString());
-            }
-
-            KieContainer kieContainer = kieServices.newKieContainer(kieServices.getRepository().getDefaultReleaseId());
-            kieSession = kieContainer.newKieSession();
-
-            isInitialized = true;
-            Log.i("DiagnosticoHelper", "Inicialización de Drools exitosa con reglas desde String.");
-        } catch (Exception e) {
-            Log.e("DiagnosticoHelper", "Error al inicializar Drools con reglas desde String: " + e.getMessage(), e);
-            isInitialized = false;
-        }
-    }
-
-    private String loadDrlFile(Context context, String path) throws IOException {
-        AssetManager assetManager = context.getAssets();
-        InputStream inputStream = assetManager.open(path);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        StringBuilder stringBuilder = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            stringBuilder.append(line).append("\n");
-        }
-        return stringBuilder.toString();
-    }
-
-    public boolean isInitialized() {
-        return isInitialized;
-    }
 
     public String diagnosticar(Paciente paciente) {
         if (paciente == null || paciente.getSintomas() == null || paciente.getSintomas().isEmpty()) {

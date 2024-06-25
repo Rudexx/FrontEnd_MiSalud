@@ -119,7 +119,7 @@ public class ChatPage extends AppCompatActivity {
                 return respuesta;
             }else{
                 sendMessage("Muy bien vamos a ver que puede ser", false);
-                DiagnosticoHelper diagnosticoHelper = new DiagnosticoHelper(this);
+                DiagnosticoHelper diagnosticoHelper = new DiagnosticoHelper();
 
             // Diagnosticar al paciente
                 String enfermedad = diagnosticoHelper.diagnosticar(paciente);
